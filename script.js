@@ -69,7 +69,7 @@ console.log(saludo4);
 
 //calcular en qué año cumplirá 100 años
 let edadEnCienAnios = parseInt(edadUsuario) + 100;
-console.log(edadEnCienAnios);
+console.log('Tu edad en 100 años: ', edadEnCienAnios);
 
 if (parseInt(edadUsuario) >= 18) {
   console.log("Eres mayor de edad.");
