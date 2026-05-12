@@ -54,8 +54,10 @@ function verificarIntento() {
     tarjeta.style.borderColor = '#00ff88';
     tarjeta.style.boxShadow = '0 0 40px rgba(0, 255, 136, 0.3)';
   } else if (valor > numeroSecreto) {
+    let pista = obtenerPista(valor, numeroSecreto);
     mostrarMensaje('📈 Muy alto. Intenta más bajo.', '#ff6b6b');
   } else {
+    let pista = obtenerPista(valor, numeroSecreto);
     mostrarMensaje('📉 Muy bajo. Intenta más alto.', '#4ecdc4');
   }
 
