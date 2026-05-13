@@ -16,10 +16,6 @@ let numeroSecreto = generarNumero();
 let intentos = 0;
 let juegoActivo = true;
 
-function cambiarEstado(texto) {
-  systemState.textContent = texto;
-}
-
 // FUNCIONES UTILITARIAS
 function generarNumero() {
   return Math.floor(Math.random() * 100) + 1;
@@ -264,3 +260,12 @@ btnVerificar.addEventListener("click", () => {
 });
 
 window.addEventListener("resize", ajustarModo);
+
+// INICIO DEL SISTEMA
+window.addEventListener("DOMContentLoaded", () => {
+  ajustarModo();
+  input.classList.add("input-active");
+  radarStatus.textContent = "INGRESE CÓDIGO";
+  input.focus();
+  actualizarCursor();
+});
