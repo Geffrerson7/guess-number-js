@@ -219,3 +219,48 @@ function ajustarModo() {
     input.removeAttribute("maxlength");
   }
 }
+
+//EVENTOS
+// BOTÓN RESET
+btnReiniciar.addEventListener("click", () => {
+  btnReiniciar.blur();
+  reiniciarSistema();
+});
+
+// SOPORTE TECLADO FÍSICO
+document.addEventListener("keydown", (e) => {
+  if (!juegoActivo) return;
+
+  if (esMobile()) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      validarIntento();
+    }
+    return;
+  }
+
+  if (e.key >= "0" && e.key <= "9") {
+    if (input.value.length < 3) {
+      input.value += e.key;
+      actualizarCursor();
+    }
+  } else if (e.key === "Enter") {
+    e.preventDefault();
+    validarIntento();
+  } else if (e.key === "Backspace") {
+    input.value = input.value.slice(0, -1);
+    actualizarCursor();
+  } else if (e.key === "Escape") {
+    input.value = "";
+    actualizarEstado("ENTRADA BORRADA");
+    actualizarCursor();
+  }
+});
+
+//BOTÓN VERIFICAR CÓDIGO
+btnVerificar.addEventListener("click", () => {
+  if (!juegoActivo) return;
+  validarIntento();
+});
+
+window.addEventListener("resize", ajustarModo);
