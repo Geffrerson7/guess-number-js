@@ -298,3 +298,121 @@ input {
     opacity: 0;
   }
 }
+
+/* RADAR */
+.radar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.radar-label {
+  font-size: 10px;
+  color: #00e5ff;
+  letter-spacing: 2px;
+}
+
+.radar {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #041a10 0%, #020d08 100%);
+  border: 1px solid rgba(0, 255, 100, 0.4);
+  overflow: hidden;
+  box-shadow:
+    0 0 20px rgba(0, 255, 100, 0.15),
+    inset 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
+.radar-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 255, 100, 0.2);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.radar-circle:nth-child(1) {
+  width: 53px;
+  height: 53px;
+}
+.radar-circle:nth-child(2) {
+  width: 106px;
+  height: 106px;
+}
+.radar-circle:nth-child(3) {
+  width: 158px;
+  height: 158px;
+}
+
+.radar-line-h,
+.radar-line-v {
+  position: absolute;
+  background: rgba(0, 255, 100, 0.15);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.radar-line-h {
+  width: 100%;
+  height: 1px;
+}
+.radar-line-v {
+  width: 1px;
+  height: 100%;
+}
+
+.radar-sweep {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 75%,
+    rgba(0, 255, 100, 0.15) 88%,
+    rgba(0, 255, 100, 0.6) 100%
+  );
+  animation: sweep 3s linear infinite;
+}
+
+.radar-blip {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00ff64;
+  box-shadow: 0 0 8px #00ff64;
+  opacity: 0;
+  transition: opacity 0.2s;
+  top: 30%;
+  left: 60%;
+}
+
+.radar-blip.active {
+  animation: blip 1.5s ease-out forwards;
+}
+
+.radar-blip.error {
+  background: #ff4444;
+  box-shadow: 0 0 8px #ff4444;
+}
+
+.radar-blip.success {
+  background: #00ff88;
+  box-shadow: 0 0 16px #00ff88;
+  animation: blip-success 2s ease-out forwards;
+}
+
+.radar-status {
+  font-size: 10px;
+  color: #00c853;
+  letter-spacing: 2px;
+  animation: blink 1.5s step-end infinite;
+  text-transform: uppercase;
+}
