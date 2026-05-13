@@ -20,6 +20,15 @@ function cambiarEstado(texto) {
   systemState.textContent = texto;
 }
 
+// FUNCIONES UTILITARIAS
+function generarNumero() {
+  return Math.floor(Math.random() * 100) + 1;
+}
+
+function esMobile() {
+  return window.innerWidth <= 480;
+}
+
 function agregarAlHistorial(numero) {
   const item = document.createElement("div");
   item.classList.add("history-item");
