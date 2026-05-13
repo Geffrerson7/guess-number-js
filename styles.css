@@ -220,3 +220,15 @@ input {
   background: rgba(0, 255, 200, 0.1);
   box-shadow: 0 0 15px rgba(0, 255, 200, 0.5);
 }
+
+/* ESTADOS */
+.input-active {
+  border: 1px solid #00ffc8;
+  box-shadow: 0 0 15px rgba(0, 255, 200, 0.4);
+  animation: inputPulse 1.5s infinite alternate;
+}
+
+.system-ready {
+  color: #00ffc8;
+  text-shadow: 0 0 8px rgba(0, 255, 200, 0.5);
+}
