@@ -209,6 +209,7 @@ function ajustarModo() {
     input.removeAttribute("readonly");
     input.setAttribute("type", "tel");
     input.setAttribute("maxlength", "3");
+    fakeCursor.style.display = "none";
   } else {
     input.setAttribute("readonly", true);
     input.setAttribute("type", "number");
