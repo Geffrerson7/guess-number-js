@@ -80,3 +80,143 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+/* COMPONENTES */
+
+/* DISPLAY Y TEXTOS */
+.level {
+  font-size: 12px;
+  color: #88c9d6;
+  margin-bottom: 20px;
+}
+
+.display-screen {
+  background: #07141c;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #12303a;
+  color: #00ffc8;
+  font-size: 22px;
+  text-align: center;
+}
+
+.status-bar {
+  font-size: 12px;
+  color: #6aa5b8;
+  border-bottom: 1px solid #12303a;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+/* INPUT */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  background: #0a1c24;
+  border: 1px solid #1e4b5c;
+  color: #00ffc8;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 3px;
+  transition: all 0.25s ease;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* HISTORIAL */
+.history-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  background: rgba(0, 255, 255, 0.05);
+  padding: 10px;
+  margin-bottom: 15px;
+  height: 180px;
+  overflow-y: auto;
+}
+
+.history-title {
+  color: #00e5ff;
+  margin-bottom: 6px;
+  letter-spacing: 2px;
+}
+
+.history-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #00d4ff;
+}
+
+.history-entry {
+  padding: 4px 6px;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  background: rgba(0, 255, 255, 0.08);
+  font-size: 12px;
+}
+
+.history-entry--low {
+  color: #00aaff;
+  border-color: rgba(0, 170, 255, 0.4);
+  background: rgba(0, 170, 255, 0.08);
+}
+
+.history-entry--high {
+  color: #ff8800;
+  border-color: rgba(255, 136, 0, 0.4);
+  background: rgba(255, 136, 0, 0.08);
+}
+
+.history-entry--correct {
+  color: #00ff88;
+  border-color: rgba(0, 255, 136, 0.5);
+  background: rgba(0, 255, 136, 0.1);
+}
+
+/* BOTONES */
+.system-controls {
+  margin-top: 15px;
+}
+
+.reset-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 80, 80, 0.5);
+  color: #ff5555;
+  font-family: "Share Tech Mono", monospace;
+  padding: 10px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+  background: rgba(255, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+}
+
+.reset-btn:focus {
+  outline: none;
+}
+
+.verify-btn {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid #00ffc8;
+  color: #00ffc8;
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.verify-btn:hover {
+  background: rgba(0, 255, 200, 0.1);
+  box-shadow: 0 0 15px rgba(0, 255, 200, 0.5);
+}
