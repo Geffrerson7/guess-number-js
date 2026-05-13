@@ -206,3 +206,16 @@ function efectoError() {
     panel.style.boxShadow = "inset 0 0 20px rgba(0,255,255,0.1)";
   }, 300);
 }
+
+// MODO RESPONSIVE
+function ajustarModo() {
+  if (esMobile()) {
+    input.removeAttribute("readonly");
+    input.setAttribute("type", "tel");
+    input.setAttribute("maxlength", "3");
+  } else {
+    input.setAttribute("readonly", true);
+    input.setAttribute("type", "number");
+    input.removeAttribute("maxlength");
+  }
+}
