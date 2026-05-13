@@ -13,7 +13,6 @@
           <div class="panel-header">
             <h1>LABORATORIO ENTER SCHOOL</h1>
             <p class="level">NIVEL 12 — ÁREA RESTRINGIDA</p>
-
             <!-- Display -->
             <div class="display-screen">
               <p id="statusText">ADIVINA EL CÓDIGO OCULTO</p>
@@ -21,21 +20,27 @@
             </div>
           </div>
 
-          <!-- Status -->
+          <!-- Panel Izquierdo -->
           <div class="left-panel">
+            <!-- Estado del Sistema -->
             <div class="status-bar">
               <span id="systemState">SISTEMA EN ESPERA</span>
             </div>
+            <!-- Historial de Intentos -->
             <div class="history-panel">
               <div class="history-title">REGISTRO DE INTENTOS</div>
               <div id="historyList" class="history-list"></div>
             </div>
           </div>
+
+          <!-- Panel Derecho -->
           <div class="right-panel">
+            <!-- Entrada de Código -->
             <div class="input-wrapper">
               <input type="number" id="inputIntento" readonly />
               <div class="fake-cursor" id="fakeCursor"></div>
             </div>
+            <!-- Boton de Verificar -->
             <button id="btnVerificar" class="verify-btn">
               VERIFICAR CÓDIGO
             </button>
@@ -53,7 +58,7 @@
               </div>
               <div class="radar-status" id="radarStatus">INGRESE CÓDIGO</div>
             </div>
-            <!-- Reset -->
+            <!-- Boton Reiniciar -->
             <div class="system-controls">
               <button id="btnReiniciar" class="reset-btn">
                 REINICIAR SISTEMA
