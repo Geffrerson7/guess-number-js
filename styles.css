@@ -428,3 +428,197 @@ input {
   animation: cursorBlink 2s infinite;
   pointer-events: none;
 }
+
+/* ===============================
+   TABLET — hasta 768px
+   =============================== */
+@media (max-width: 768px) {
+  .glass-door {
+    padding: 24px 16px;
+    border-radius: 6px;
+    margin: 0 12px;
+  }
+
+  .lock-panel {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    padding: 16px;
+    margin: 0 auto;
+    gap: 12px;
+  }
+
+  .panel-header {
+    margin-bottom: 10px;
+  }
+
+  .panel-header h1 {
+    font-size: 14px;
+  }
+
+  .display-screen {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .history-panel {
+    height: 130px;
+  }
+
+  input {
+    font-size: 20px;
+  }
+}
+
+/* ===============================
+   MOBILE — hasta 480px
+   =============================== */
+@media (max-width: 480px) {
+  body {
+    align-items: flex-start;
+  }
+
+  .lab-environment {
+    padding: 16px 0 24px;
+  }
+
+  .glass-door {
+    padding: 16px 10px;
+    margin: 0 8px;
+    border-radius: 4px;
+  }
+
+  .lock-panel {
+    max-width: 100%;
+    padding: 12px;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .panel-header h1 {
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .level {
+    font-size: 10px;
+    margin-bottom: 12px;
+  }
+
+  .display-screen {
+    font-size: 13px;
+    padding: 8px 6px;
+  }
+
+  #hintText {
+    font-size: 11px;
+  }
+
+  .history-panel {
+    height: 110px;
+  }
+
+  .history-title {
+    font-size: 11px;
+  }
+
+  .history-entry {
+    font-size: 11px;
+  }
+
+  input {
+    font-size: 22px;
+    padding: 12px;
+    letter-spacing: 6px;
+    cursor: text;
+  }
+
+  .status-bar {
+    font-size: 10px;
+  }
+
+  .reset-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 12px;
+  }
+}
+
+/* ===============================
+   DESKTOP — desde 1200px
+   =============================== */
+@media (min-width: 1200px) {
+  .glass-door {
+    padding: 50px;
+  }
+
+  .lock-panel {
+    max-width: 680px;
+    gap: 24px;
+    padding: 28px;
+  }
+
+  .panel-header h1 {
+    font-size: 18px;
+  }
+
+  .display-screen {
+    font-size: 24px;
+    padding: 14px;
+  }
+
+  .history-panel {
+    height: 210px;
+  }
+
+  input {
+    font-size: 22px;
+  }
+}
+
+/* ===============================
+   LANDSCAPE — móviles y tablets
+   =============================== */
+@media (max-width: 900px) and (orientation: landscape) {
+
+  body {
+    align-items: flex-start;
+  }
+
+  .lab-environment {
+    padding: 12px 0;
+  }
+
+  .glass-door {
+    padding: 12px;
+  }
+
+  .lock-panel {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 100%;
+  }
+
+  .history-panel {
+    height: 90px;
+  }
+
+  .radar {
+    width: 120px;
+    height: 120px;
+  }
+
+  .display-screen {
+    font-size: 14px;
+  }
+
+  input {
+    font-size: 18px;
+    padding: 8px;
+  }
+
+  .verify-btn,
+  .reset-btn {
+    padding: 8px;
+    font-size: 11px;
+  }
+}
