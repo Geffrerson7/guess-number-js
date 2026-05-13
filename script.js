@@ -214,6 +214,7 @@ function ajustarModo() {
     input.setAttribute("readonly", true);
     input.setAttribute("type", "number");
     input.removeAttribute("maxlength");
+    fakeCursor.style.display = "block";
   }
 }
 
