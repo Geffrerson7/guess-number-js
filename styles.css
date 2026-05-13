@@ -33,3 +33,35 @@ body {
   color: #00ff99;
   font-weight: bold;
 }
+
+/* HISTORIAL */
+.history-panel {
+  margin-top: 20px;
+  border: 2px solid #00ff99;
+  padding: 10px;
+  background: #0f1622;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+}
+
+.history-title {
+  font-size: 14px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  color: #00ff99;
+  text-align: center;
+}
+
+.history-list {
+  flex: 1;
+  overflow-y: auto;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+.history-item {
+  margin-bottom: 5px;
+  padding: 4px;
+  border-bottom: 1px solid #1c2a3a;
+}
