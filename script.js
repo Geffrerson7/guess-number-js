@@ -29,6 +29,50 @@ function esMobile() {
   return window.innerWidth <= 480;
 }
 
+// FUNCIONES VISUALES
+// CURSOR
+function actualizarCursor() {
+  if (input.value.length === 0) {
+    fakeCursor.style.left = "50%";
+    return;
+  }
+
+  const offset = input.value.length * 18;
+  fakeCursor.style.left = `calc(50% + ${offset - 20}px)`;
+}
+
+// RADAR
+function activarRadar(tipo) {
+  const angulo = Math.random() * 2 * Math.PI;
+  const distancia = Math.random() * 55 + 15;
+  const cx = 80,
+    cy = 80;
+  const x = cx + distancia * Math.cos(angulo) - 3;
+  const y = cy + distancia * Math.sin(angulo) - 3;
+
+  radarBlip.style.left = x + "px";
+  radarBlip.style.top = y + "px";
+
+  radarBlip.className = "radar-blip";
+  void radarBlip.offsetWidth;
+
+  if (tipo === "success") {
+    radarBlip.classList.add("success");
+    radarStatus.textContent = "CÓDIGO IDENTIFICADO";
+    radarStatus.style.color = "#00ff88";
+  } else {
+    radarBlip.classList.add("error", "active");
+    radarStatus.textContent = "SIN COINCIDENCIA";
+    radarStatus.style.color = "#ff4444";
+  }
+}
+
+function resetRadar() {
+  radarBlip.className = "radar-blip";
+  radarStatus.textContent = "INGRESE CÓDIGO";
+  radarStatus.style.color = "#00c853";
+}
+
 function agregarAlHistorial(numero) {
   const item = document.createElement("div");
   item.classList.add("history-item");
