@@ -416,3 +416,15 @@ input {
   animation: blink 1.5s step-end infinite;
   text-transform: uppercase;
 }
+
+/* CURSOR TIPO TERMINAL */
+.fake-cursor {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-90%);
+  width: 8px;
+  height: 20px;
+  background: #00ffc8;
+  animation: cursorBlink 2s infinite;
+  pointer-events: none;
+}
