@@ -75,12 +75,15 @@ function validarIntento() {
   const intento = parseInt(input.value);
 
   if (!input.value) {
+    statusText.textContent = "ERROR: CAMPO VACÍO🚫";
+    radarStatus.textContent = "CODIGO NO DETECTADO";
+    radarStatus.style.color = "#ff4444";
     actualizarEstado("CÓDIGO NO DETECTADO");
     return;
   }
 
   if (intento < 1 || intento > 100) {
-    statusText.textContent = "CÓDIGO FUERA DEL RANGO PERMITIDO";
+    statusText.textContent = "CÓDIGO FUERA DEL RANGO PERMITIDO🚫";
     actualizarEstado("CÓDIGO FUERA DEL RANGO PERMITIDO");
     hintText.textContent = "Ingrese un número del 1 al 100";
     radarStatus.textContent = "FUERA DE RANGO";
