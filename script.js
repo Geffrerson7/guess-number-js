@@ -73,68 +73,136 @@ function resetRadar() {
   radarStatus.style.color = "#00c853";
 }
 
-function agregarAlHistorial(numero) {
-  const item = document.createElement("div");
-  item.classList.add("history-item");
-  item.textContent = `Intento: ${numero}`;
-  historyList.appendChild(item);
-}
-
-function actualizarCursor() {
-  if (input.value.length === 0) {
-    fakeCursor.style.left = "calc(50% - 20px)";
-    return;
-  }
-
-  const offset = input.value.length * 18;
-  fakeCursor.style.left = `calc(50% + ${offset - 20}px)`;
-}
-
+// LÓGICA DEL JUEGO
+//Validar intento
 function validarIntento() {
   const intento = parseInt(input.value);
 
   if (!input.value) {
-    statusText.textContent = "CÓDIGO NO DETECTADO";
+    actualizarEstado("CÓDIGO NO DETECTADO");
     return;
   }
 
   if (intento < 1 || intento > 100) {
-    statusText.textContent = "FUERA DE RANGO";
+    statusText.textContent = "CÓDIGO FUERA DEL RANGO PERMITIDO";
+    actualizarEstado("CÓDIGO FUERA DEL RANGO PERMITIDO");
+    hintText.textContent = "Ingrese un número del 1 al 100";
+    radarStatus.textContent = "FUERA DE RANGO";
+    radarStatus.style.color = "#ff4444";
     input.value = "";
     actualizarCursor();
     return;
   }
 
-  if (intento === numeroSecreto) {
-    statusText.textContent = "ACCESO AUTORIZADO";
-    activarRadar("success");
-  } else if (intento < numeroSecreto) {
-    statusText.textContent = "EL CÓDIGO ES MAYOR";
-    activarRadar("error");
-  } else {
-    statusText.textContent = "EL CÓDIGO ES MENOR";
-    activarRadar("error");
+  intentos++;
+
+  if (intentos >= MAX_INTENTOS && intento !== numeroSecreto) {
+    bloquearSistema();
+    return;
   }
 
+  if (intento === numeroSecreto) {
+    agregarAlHistorial(intento, "correct");
+    ganar();
+    return;
+  }
+
+  if (intento < numeroSecreto) {
+    statusText.textContent = "EL CÓDIGO ES MAYOR";
+    hintText.textContent = calcularProximidad(intento);
+    agregarAlHistorial(intento, "low");
+  } else {
+    statusText.textContent = "EL CÓDIGO ES MENOR";
+    hintText.textContent = calcularProximidad(intento);
+    agregarAlHistorial(intento, "high");
+  }
+
+  actualizarEstado("ACCESO DENEGADO");
+  efectoError();
   input.value = "";
   actualizarCursor();
 }
 
-btnVerificar.addEventListener("click", validarIntento);
+// PROXIMIDAD DE CÓDIGO
+function calcularProximidad(intento) {
+  const diferencia = Math.abs(numeroSecreto - intento);
+  const porcentaje = Math.max(0, 100 - diferencia);
+  return `Proximidad del código: ${porcentaje}%`;
+}
 
-function activarRadar(tipo) {
-  radarBlip.classList.remove("error", "success", "active");
+// GANAR
+function ganar() {
+  activarRadar("success");
+  statusText.textContent = "ACCESO AUTORIZADO";
+  hintText.textContent = "Sistema Desbloqueado";
+  actualizarEstado("SISTEMA DESBLOQUEADO");
+  input.classList.remove("input-active");
+  document.querySelector(".lock-panel").style.boxShadow =
+    "0 0 40px rgba(0,255,150,0.6)";
 
-  void radarBlip.offsetWidth; // reinicia animación
+  juegoActivo = false;
+}
 
-  if (tipo === "error") {
-    radarBlip.classList.add("error", "active");
-    radarStatus.textContent = "CÓDIGO INCORRECTO";
-  } else if (tipo === "success") {
-    radarBlip.classList.add("success", "active");
-    radarStatus.textContent = "OBJETIVO IDENTIFICADO";
-  } else {
-    radarBlip.classList.add("active");
-    radarStatus.textContent = "ESCANEANDO...";
-  }
+//BLOQUEAR JUEGO
+function bloquearSistema() {
+  juegoActivo = false;
+
+  statusText.textContent = "SISTEMA BLOQUEADO🚫";
+  hintText.textContent = "Máximo de intentos alcanzado";
+  systemState.textContent = "BLOQUEO DE SEGURIDAD";
+
+  input.disabled = true;
+  input.classList.remove("input-active");
+
+  btnReiniciar.style.display = "block";
+
+  const panel = document.querySelector(".lock-panel");
+  panel.style.boxShadow = "0 0 25px rgba(255,0,0,0.6)";
+}
+
+// REINICIAR JUEGO
+function reiniciarSistema() {
+  resetRadar();
+  numeroSecreto = generarNumero();
+  intentos = 0;
+  juegoActivo = true;
+
+  statusText.textContent = "ADIVINA EL CÓDIGO OCULTO";
+  hintText.textContent = "Rango del código: 1 - 100";
+  systemState.textContent = "SISTEMA EN ESPERA";
+  input.value = "";
+  historyList.innerHTML = "";
+  input.classList.add("input-active");
+  input.focus();
+
+  document.querySelector(".lock-panel").style.boxShadow =
+    "inset 0 0 20px rgba(0,255,255,0.1)";
+  actualizarCursor();
+}
+
+// ACTUALIZAR ESTADO
+function actualizarEstado(mensaje) {
+  systemState.textContent = `${mensaje} | INTENTOS: ${intentos}/10`;
+}
+
+// ACTUALIZAR HISTORIAL
+function agregarAlHistorial(valor, resultado) {
+  const entry = document.createElement("div");
+  entry.classList.add("history-entry", `history-entry--${resultado}`);
+
+  const icons = { low: "▲", high: "▼", correct: "✓" };
+  entry.textContent = `${icons[resultado]} Intento ${intentos}: Código ${valor}`;
+
+  historyList.prepend(entry);
+}
+
+// EFECTO ERROR
+function efectoError() {
+  activarRadar("error");
+  const panel = document.querySelector(".lock-panel");
+  panel.style.boxShadow = "0 0 25px rgba(255,0,0,0.6)";
+
+  setTimeout(() => {
+    panel.style.boxShadow = "inset 0 0 20px rgba(0,255,255,0.1)";
+  }, 300);
 }
