@@ -15,3 +15,21 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.left-panel {
+  margin-top: 20px;
+}
+
+.status-bar {
+  background: #111;
+  border: 2px solid #00ff99;
+  padding: 10px;
+  text-align: center;
+  font-family: monospace;
+  letter-spacing: 2px;
+}
+
+.status-bar span {
+  color: #00ff99;
+  font-weight: bold;
+}
