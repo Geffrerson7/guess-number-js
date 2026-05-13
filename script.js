@@ -10,6 +10,12 @@ const radarStatus = document.getElementById("radarStatus");
 const fakeCursor = document.getElementById("fakeCursor");
 const btnVerificar = document.getElementById("btnVerificar");
 
+// Configuración
+const MAX_INTENTOS = 10;
+let numeroSecreto = generarNumero();
+let intentos = 0;
+let juegoActivo = true;
+
 function cambiarEstado(texto) {
   systemState.textContent = texto;
 }
