@@ -1,11 +1,14 @@
 // Elementos
-const systemState = document.getElementById("systemState");
-const historyList = document.getElementById("historyList");
 const input = document.getElementById("inputIntento");
-const fakeCursor = document.getElementById("fakeCursor");
-const btnVerificar = document.getElementById("btnVerificar");
+const statusText = document.getElementById("statusText");
+const hintText = document.getElementById("hintText");
+const systemState = document.getElementById("systemState");
+const btnReiniciar = document.getElementById("btnReiniciar");
+const historyList = document.getElementById("historyList");
 const radarBlip = document.getElementById("radarBlip");
 const radarStatus = document.getElementById("radarStatus");
+const fakeCursor = document.getElementById("fakeCursor");
+const btnVerificar = document.getElementById("btnVerificar");
 
 function cambiarEstado(texto) {
   systemState.textContent = texto;
