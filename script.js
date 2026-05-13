@@ -4,6 +4,8 @@ const historyList = document.getElementById("historyList");
 const input = document.getElementById("inputIntento");
 const fakeCursor = document.getElementById("fakeCursor");
 const btnVerificar = document.getElementById("btnVerificar");
+const radarBlip = document.getElementById("radarBlip");
+const radarStatus = document.getElementById("radarStatus");
 
 function cambiarEstado(texto) {
   systemState.textContent = texto;
@@ -43,10 +45,13 @@ function validarIntento() {
 
   if (intento === numeroSecreto) {
     statusText.textContent = "ACCESO AUTORIZADO";
+    activarRadar("success");
   } else if (intento < numeroSecreto) {
     statusText.textContent = "EL CÓDIGO ES MAYOR";
+    activarRadar("error");
   } else {
     statusText.textContent = "EL CÓDIGO ES MENOR";
+    activarRadar("error");
   }
 
   input.value = "";
@@ -54,3 +59,20 @@ function validarIntento() {
 }
 
 btnVerificar.addEventListener("click", validarIntento);
+
+function activarRadar(tipo) {
+  radarBlip.classList.remove("error", "success", "active");
+
+  void radarBlip.offsetWidth; // reinicia animación
+
+  if (tipo === "error") {
+    radarBlip.classList.add("error", "active");
+    radarStatus.textContent = "CÓDIGO INCORRECTO";
+  } else if (tipo === "success") {
+    radarBlip.classList.add("success", "active");
+    radarStatus.textContent = "OBJETIVO IDENTIFICADO";
+  } else {
+    radarBlip.classList.add("active");
+    radarStatus.textContent = "ESCANEANDO...";
+  }
+}
