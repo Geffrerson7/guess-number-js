@@ -79,6 +79,7 @@ function validarIntento() {
 
   if (!input.value) {
     statusText.textContent = "ERROR: CAMPO VACÍO🚫";
+    statusText.style.color = "#ff4444"
     radarStatus.textContent = "CODIGO NO DETECTADO";
     radarStatus.style.color = "#ff4444";
     actualizarEstado("CÓDIGO NO DETECTADO");
@@ -87,6 +88,7 @@ function validarIntento() {
 
   if (intento < 1 || intento > 100) {
     statusText.textContent = "CÓDIGO FUERA DEL RANGO PERMITIDO🚫";
+    statusText.style.color = "#ff4444"
     actualizarEstado("CÓDIGO FUERA DEL RANGO PERMITIDO");
     hintText.textContent = "Ingrese un número del 1 al 100";
     radarStatus.textContent = "FUERA DE RANGO";
@@ -111,10 +113,12 @@ function validarIntento() {
 
   if (intento < numeroSecreto) {
     statusText.textContent = "EL CÓDIGO ES MAYOR";
+    statusText.style.color = "#00aaff";
     hintText.textContent = calcularProximidad(intento);
     agregarAlHistorial(intento, "low");
   } else {
     statusText.textContent = "EL CÓDIGO ES MENOR";
+    statusText.style.color = "#ff8800";
     hintText.textContent = calcularProximidad(intento);
     agregarAlHistorial(intento, "high");
   }
