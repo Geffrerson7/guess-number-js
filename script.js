@@ -140,6 +140,7 @@ function calcularProximidad(intento) {
 function ganar() {
   activarRadar("success");
   statusText.textContent = "ACCESO AUTORIZADO";
+  statusText.style.color = "#00ff88"
   hintText.textContent = "Sistema Desbloqueado";
   actualizarEstado("SISTEMA DESBLOQUEADO");
   input.classList.remove("input-active");
