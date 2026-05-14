@@ -100,7 +100,7 @@ function validarIntento() {
 
   intentos++;
 
-  if (intentos >= MAX_INTENTOS && intento !== numeroSecreto) {
+  if (intentos > MAX_INTENTOS && intento !== numeroSecreto) {
     bloquearSistema();
     return;
   }
@@ -175,6 +175,7 @@ function reiniciarSistema() {
   juegoActivo = true;
 
   statusText.textContent = "ADIVINA EL CÓDIGO OCULTO";
+  statusText.style.color = "#00ffc8"
   hintText.textContent = "Rango del código: 1 - 100";
   systemState.textContent = "SISTEMA EN ESPERA";
   input.value = "";
