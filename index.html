@@ -18,6 +18,7 @@
           <div class="panel-header">
             <h1>LABORATORIO ENTER SCHOOL</h1>
             <p class="level">NIVEL 12 — ÁREA RESTRINGIDA</p>
+            <button id="btnAyuda">?</button>
             <!-- Display -->
             <div class="display-screen">
               <p id="statusText">ADIVINA EL CÓDIGO OCULTO</p>
@@ -73,7 +74,16 @@
         </div>
       </div>
     </div>
-
+    <div id="modalAyuda" class="modal-overlay">
+      <div class="modal-box">
+        <h2>¿CÓMO JUGAR?</h2>
+        <p>El sistema oculta un código secreto entre 1 y 100.</p>
+        <p>Tienes <strong>10 intentos</strong> para descifrarlo.</p>
+        <p>Cada intento te dirá si el código es mayor o menor.</p>
+        <p>El radar indica qué tan cerca estás.</p>
+        <button id="btnCerrarModal">[ CERRAR ]</button>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

@@ -9,6 +9,9 @@ const radarBlip = document.getElementById("radarBlip");
 const radarStatus = document.getElementById("radarStatus");
 const fakeCursor = document.getElementById("fakeCursor");
 const btnVerificar = document.getElementById("btnVerificar");
+const btnAyuda = document.getElementById("btnAyuda");
+const modalAyuda = document.getElementById("modalAyuda");
+const btnCerrarModal = document.getElementById("btnCerrarModal");
 
 // Configuración
 const MAX_INTENTOS = 10;
@@ -262,6 +265,21 @@ document.addEventListener("keydown", (e) => {
 btnVerificar.addEventListener("click", () => {
   if (!juegoActivo) return;
   validarIntento();
+});
+
+//BOTON AYUDA
+btnAyuda.addEventListener("click", () => {
+  modalAyuda.classList.add("active");
+});
+
+//BOTON CERRAR MODAL
+btnCerrarModal.addEventListener("click", () => {
+  modalAyuda.classList.remove("active");
+});
+
+// Cerrar al hacer click fuera del modal
+modalAyuda.addEventListener("click", (e) => {
+  if (e.target === modalAyuda) modalAyuda.classList.remove("active");
 });
 
 window.addEventListener("resize", ajustarModo);

@@ -210,7 +210,7 @@ input {
   background: transparent;
   border: 1px solid #00ffc8;
   color: #00ffc8;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   letter-spacing: 2px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -231,6 +231,78 @@ input {
 .system-ready {
   color: #00ffc8;
   text-shadow: 0 0 8px rgba(0, 255, 200, 0.5);
+}
+
+/* MODAL AYUDA */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  background: #0d0d0d;
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  padding: 28px;
+  max-width: 360px;
+  width: 90%;
+  font-family: "Share Tech Mono", monospace;
+  color: #00ff41;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* BOTON AYUDA */
+#btnAyuda {
+  background: transparent;
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  color: #00ff41;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 12px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition:
+    background 0.15s,
+    box-shadow 0.15s;
+  margin-bottom: 10px;
+}
+
+#btnAyuda:hover {
+  background: rgba(0, 255, 65, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+/* BOTON CERRAR MODAL */
+#btnCerrarModal {
+  background: transparent;
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  color: #00ff41;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 12px;
+  padding: 8px 20px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  margin-top: 8px;
+  transition:
+    background 0.15s,
+    box-shadow 0.15s;
+}
+
+#btnCerrarModal:hover {
+  background: rgba(0, 255, 65, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
 }
 
 /* ANIMACIONES */
@@ -579,7 +651,6 @@ input {
    LANDSCAPE — móviles y tablets
    =============================== */
 @media (max-width: 900px) and (orientation: landscape) {
-
   body {
     align-items: flex-start;
   }
